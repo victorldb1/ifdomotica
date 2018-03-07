@@ -87,4 +87,73 @@ $(document).ready(function(){
     		$("#btn_lamp8").html("Acender");
     	}
     });
+
+    var trataBotoes(java.awt.event.ActionEvent evt) {                             
+        javax.swing.JButton generico = (javax.swing.JButton) evt.getSource();
+        
+        if (generico.getText().equals("Ligar"))
+        {
+            generico.setText("Desligar");
+            ArduinoBLL.ligaDispositivo(generico.getName());
+            jTextField1.setText(ArduinoBLL.mostraBits(ArduinoBLL.getDisplay()));
+        }
+        else
+        {
+            generico.setText("Ligar");
+            ArduinoBLL.desligaDispositivo(generico.getName());
+            jTextField1.setText(ArduinoBLL.mostraBits(ArduinoBLL.getDisplay()));
+        }
+    }                            
+
+    private void jButton9ActionPerformed(java.awt.event.ActionEvent evt) {                                         
+        ArduinoBLL.setDisplay(0);
+        jTextField1.setText(ArduinoBLL.mostraBits(ArduinoBLL.getDisplay()));
+        jButton1.setText("Ligar");
+        jButton2.setText("Ligar");
+        jButton3.setText("Ligar");
+        jButton4.setText("Ligar");
+        jButton5.setText("Ligar");
+        jButton6.setText("Ligar");
+        jButton7.setText("Ligar");
+        jButton8.setText("Ligar");
+    }
+    
+    //CLASSE!!!!
+
+    function ArduinoBLL() {
+        var display = 0, flag, _display, _flag, _x, _n;
+        
+        this.setDisplay = function(_display) {display = _display;}
+        this.getDisplay = function() {return display;}
+        
+        this.setFlag = function(_flag) {flag = _flag; }
+        this.getFlag = function() { return flag; }
+        
+        this.mostraBits = function(_x){
+            var retorno = "";
+            var aux = 128;
+            
+            for (var i=0; i<8; ++i){
+                if ( (_x&aux) != 0)  retorno += "1";
+                else                 retorno += "0";
+                aux = aux >> 1;
+            }
+            return retorno;
+        }
+        
+        this.ligaDispositivo = function(_n){
+            var aux = 1 << (Integer.parseInt(_n)-1);
+            display = display | aux;
+        }
+        
+        this.desligaDispositivo = function(_n){
+            var aux = 1 << (Integer.parseInt(_n)-1);
+            display = display & ~aux;
+        }
+    }
+
+
+    $("#display").html("");
+
+
 });
