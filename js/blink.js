@@ -1,4 +1,4 @@
-// Como o johnny five é um módulo Node.js, ele é carregado como qualquer outro
+/*// Como o johnny five é um módulo Node.js, ele é carregado como qualquer outro
 var five = require('johnny-five'); // Instanciamos uma placa, que neste caso será a do Arduino que se comunicará com o computador 
 
 var board = new five.Board();
@@ -27,4 +27,11 @@ board.on('ready', function() { // Instanciamos um led no pino 13
     });
 
     
+});*/
+
+var five = require("johnny-five");
+var board = new five.Board();
+board.on("ready", function(){
+  var led = new five.Led(13);
+  led.blink(500);
 });
