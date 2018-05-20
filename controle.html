@@ -1,4 +1,4 @@
-<<<<<<< HEAD
+<!DOCTYPE html>
 <html>
 <head>
 	<title>Controle</title>
@@ -7,20 +7,7 @@
   <link rel="stylesheet" href="css/bootstrap.min.css">
 	<script type="text/javascript" src="js/jquery.min.js"></script>
 	<script type="text/javascript" src="js/bitwise.js"></script>
-
-<?php
-
-  //$port = fopen("COM4", "w");
-  //fwrite($port, $byte);
-  //fclose($port);
-  $enviar = $_POST['bits'];
-
-  if(!isset($enviar)){
-    $byte = $_POST["dados_enviar"];
-    echo $byte;
-  }
-?>
-
+  <script type="text/javascript" src="js/blink.js"></script>
 </head>
 <body>
 	<header>
@@ -53,10 +40,7 @@
 
           <div class="row text-center">
             <div class="col-12">
-              <form id="bits" method="post" action="">
-                <input type="text" id="dados" name="dados_enviar" value=""/>
-              
-              <h4><label id="display"><?php echo $byte?>00000000</label></h4>
+              <h4><label id="display">00000000</label></h4>
               <button type="button" id="btn_all" class="btn btn-outline-light btn-block">Apagar Tudo</button>
               <br/>
             </div>
@@ -104,8 +88,7 @@
   					<div class="col-6 col-sm-6 col-md-3">
   						<h4>Lampada 8</h4>
         			<img src="images/luz_apagada.png" id="state_lamp8" class="img-fluid mx-auto d-block">
-						  <button type="submit" id="btn_lamp8" class="btn btn-outline-light btn-block">Acender</button>
-              </form>
+						  <button type="button" id="btn_lamp8" class="btn btn-outline-light btn-block">Acender</button>
   					</div>
 				  </div>
         <br/>
@@ -117,5 +100,3 @@
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 </body>
 </html>
-=======
->>>>>>> parent of 45b99b6... att 8.2
