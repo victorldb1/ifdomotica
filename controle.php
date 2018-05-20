@@ -1,15 +1,3 @@
-<?php
-
-  //$port = fopen("COM4", "w");
-  //fwrite($port, $byte);
-  //fclose($port);
-
-
-  if(isset($_POST['bits'])){
-    $byte = $_POST["dados_enviar"];
-    echo $byte;
-  }
-?>
 <html>
 <head>
 	<title>Controle</title>
@@ -18,25 +6,20 @@
   <link rel="stylesheet" href="css/bootstrap.min.css">
 	<script type="text/javascript" src="js/jquery.min.js"></script>
 	<script type="text/javascript" src="js/bitwise.js"></script>
-  <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
-  <script type="text/javascript">
-    $(document).ready(function(){
-      $("bits").on("submit", function(e){
-        e.preventDefault();
-        var textarea = $("#textarea").val();
-        $.ajax({
-          url: "controle.php",
-          method: "POST",
-          dataType: "html",
-          data: dados
-        }).done(function(data){
 
-        }).fail(function(data){
+<?php
 
-        });
-      });
-    });
-  </script>
+  //$port = fopen("COM4", "w");
+  //fwrite($port, $byte);
+  //fclose($port);
+  $enviar = $_POST['bits'];
+
+  if(!isset($enviar)){
+    $byte = $_POST["dados_enviar"];
+    echo $byte;
+  }
+?>
+
 </head>
 <body>
 	<header>
@@ -72,7 +55,7 @@
               <form id="bits" method="post" action="">
                 <input type="text" id="dados" name="dados_enviar" value=""/>
               
-              <h4><label id="display">00000000</label></h4>
+              <h4><label id="display"><?php echo $byte?>00000000</label></h4>
               <button type="button" id="btn_all" class="btn btn-outline-light btn-block">Apagar Tudo</button>
               <br/>
             </div>
