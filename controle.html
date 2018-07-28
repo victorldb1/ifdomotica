@@ -7,11 +7,9 @@
   <link rel="stylesheet" href="css/bootstrap.min.css">
 	<script type="text/javascript" src="js/jquery.min.js"></script>
 	<script type="text/javascript" src="js/bitwise.js"></script>
-
-<script src="https://www.gstatic.com/firebasejs/5.0.3/firebase.js"></script>
-<script>
+  <script src="https://www.gstatic.com/firebasejs/5.0.3/firebase.js"></script>
+  <script>
     // Initialize Firebase
- 
   var config = {
     apiKey: "AIzaSyD6pYrTUjTZMNkVfOqz9o9iNByC1qQ_r14",
     authDomain: "ifdomotica.firebaseapp.com",
@@ -21,20 +19,97 @@
     messagingSenderId: "645746106917"
   };
   firebase.initializeApp(config);
-
   function uptadeFirebase(){
     const fb = firebase.database().ref();
     bit = document.getElementById('display').innerHTML;
     data = {bit};
     fb.child('numeros/').update(data);
   }
+  var lamp, paraEstado;
+  function updateImage(lamp, paraEstado){
+    const f = firebase.database().ref('Lampadas');
+    switch(lamp){
+      case '1': if (paraEstado == "off"){ estado='images/luz_apagada.png';}
+              else { estado='images/luz_acesa.png'; }
+              img = {estado};
+              f.child('lamp1/').update(img);
+        break;
+      case '2': if (paraEstado == "off"){ estado='images/luz_apagada.png';}
+              else { estado='images/luz_acesa.png'; }
+              img = {estado};
+              f.child('lamp2/').update(img);
+        break;
+      case '3': if (paraEstado == "off"){ estado='images/luz_apagada.png';}
+              else { estado='images/luz_acesa.png'; }
+              img = {estado};
+              f.child('lamp3/').update(img);
+        break;
+      case '4': if (paraEstado == "off"){ estado='images/luz_apagada.png';}
+              else { estado='images/luz_acesa.png'; }
+              img = {estado};
+              f.child('lamp4/').update(img);
+        break;
+      case '5': if (paraEstado == "off"){ estado='images/luz_apagada.png';}
+              else { estado='images/luz_acesa.png'; }
+              img = {estado};
+              f.child('lamp5/').update(img);
+        break;
+      case '6': if (paraEstado == "off"){ estado='images/luz_apagada.png';}
+              else { estado='images/luz_acesa.png'; }
+              img = {estado};
+              f.child('lamp6/').update(img);
+        break;
+      case '7': if (paraEstado == "off"){ estado='images/luz_apagada.png';}
+              else { estado='images/luz_acesa.png'; }
+              img = {estado};
+              f.child('lamp7/').update(img);
+        break;
+      case '8': if (paraEstado == "off"){ estado='images/luz_apagada.png';}
+              else { estado='images/luz_acesa.png'; }
+              img = {estado};
+              f.child('lamp8/').update(img);
+        break;
+    }
+  }
   window.onload = function(){
     var rootRef = firebase.database().ref().child('numeros');
     rootRef.on('value', function(snapshot){
       $('#display').html(snapshot.child('bit').val());
-    })
-  }  
+    }) 
 
+    var imgRef = firebase.database().ref().child('Lampadas/lamp1');
+    imgRef.on('value', function(snapshot){
+      $('#state_lamp1').attr("src",snapshot.child('estado').val());
+    })
+    var imgRef = firebase.database().ref().child('Lampadas/lamp2');
+    imgRef.on('value', function(snapshot){
+      $('#state_lamp2').attr("src",snapshot.child('estado').val());
+    })
+    var imgRef = firebase.database().ref().child('Lampadas/lamp3');
+    imgRef.on('value', function(snapshot){
+      $('#state_lamp3').attr("src",snapshot.child('estado').val());
+    })
+    var imgRef = firebase.database().ref().child('Lampadas/lamp4');
+    imgRef.on('value', function(snapshot){
+      $('#state_lamp4').attr("src",snapshot.child('estado').val());
+    })
+    var imgRef = firebase.database().ref().child('Lampadas/lamp5');
+    imgRef.on('value', function(snapshot){
+      $('#state_lamp5').attr("src",snapshot.child('estado').val());
+    })
+    var imgRef = firebase.database().ref().child('Lampadas/lamp6');
+    imgRef.on('value', function(snapshot){
+      $('#state_lamp6').attr("src",snapshot.child('estado').val());
+    })
+    var imgRef = firebase.database().ref().child('Lampadas/lamp7');
+    imgRef.on('value', function(snapshot){
+      $('#state_lamp7').attr("src",snapshot.child('estado').val());
+    })
+    var imgRef = firebase.database().ref().child('Lampadas/lamp8');
+    imgRef.on('value', function(snapshot){
+      $('#state_lamp8').attr("src",snapshot.child('estado').val());
+    })
+  }
 
 var _n, _x, display=0, _display;
 function setDisplay(_display) {display = _display;}
@@ -88,12 +163,14 @@ $(document).ready(function(){
         $("#btn_lamp1").html("Apagar");
             ligaDispositivo(1);
             mostraBits(getDisplay());
+            updateImage('1', "on");
       }
       else {
         $("#state_lamp1").attr("src","images/luz_apagada.png");
         $("#btn_lamp1").html("Acender");
             desligaDespositivo(1);
             mostraBits(getDisplay());
+            updateImage('1', "off")
       }
     });
     //imagem 2
@@ -103,12 +180,14 @@ $(document).ready(function(){
         $("#btn_lamp2").html("Apagar");
             ligaDispositivo(2);
             mostraBits(getDisplay());
+            updateImage('2', "on");
       }
       else {
         $("#state_lamp2").attr("src","images/luz_apagada.png");
         $("#btn_lamp2").html("Acender");
             desligaDespositivo(2);
             mostraBits(getDisplay());
+            updateImage('2', "off");
       }
     });
     //imagem 3
@@ -118,12 +197,14 @@ $(document).ready(function(){
         $("#btn_lamp3").html("Apagar");
             ligaDispositivo(3);
             mostraBits(getDisplay());
+            updateImage('3', "on");
       }
       else {
         $("#state_lamp3").attr("src","images/luz_apagada.png");
         $("#btn_lamp3").html("Acender");
             desligaDespositivo(3);
             mostraBits(getDisplay());
+            updateImage('3', "off");
       }
     });
     //imagem 4
@@ -133,12 +214,14 @@ $(document).ready(function(){
         $("#btn_lamp4").html("Apagar");            
             ligaDispositivo(4);
             mostraBits(getDisplay());
+            updateImage('4', "on");
       }
       else {
         $("#state_lamp4").attr("src","images/luz_apagada.png");
         $("#btn_lamp4").html("Acender");
             desligaDespositivo(4);
             mostraBits(getDisplay());
+            updateImage('4', "off");
       }
     });
     //imagem 5
@@ -148,12 +231,14 @@ $(document).ready(function(){
         $("#btn_lamp5").html("Apagar");
             ligaDispositivo(5);
             mostraBits(getDisplay());
+            updateImage('5', "on");
       }
       else {
         $("#state_lamp5").attr("src","images/luz_apagada.png");
         $("#btn_lamp5").html("Acender");
             desligaDespositivo(5);
             mostraBits(getDisplay());
+            updateImage('5', "off");
       }
     });
     //imagem 6
@@ -163,12 +248,14 @@ $(document).ready(function(){
         $("#btn_lamp6").html("Apagar");
             ligaDispositivo(6);
             mostraBits(getDisplay());
+            updateImage('6', "on");
       }
       else {
         $("#state_lamp6").attr("src","images/luz_apagada.png");
         $("#btn_lamp6").html("Acender");
             desligaDespositivo(6);
             mostraBits(getDisplay());
+            updateImage('6', "off");
       }
     });
     //imagem 7
@@ -178,12 +265,14 @@ $(document).ready(function(){
         $("#btn_lamp7").html("Apagar");            
             ligaDispositivo(7);
             mostraBits(getDisplay());
+            updateImage('7', "on");
       }
       else {
         $("#state_lamp7").attr("src","images/luz_apagada.png");
         $("#btn_lamp7").html("Acender");
             desligaDespositivo(7);
             mostraBits(getDisplay());
+            updateImage('7', "off");
       }
     });
     //imagem 8
@@ -193,12 +282,14 @@ $(document).ready(function(){
         $("#btn_lamp8").html("Apagar");
             ligaDispositivo(8);
             mostraBits(getDisplay());
+            updateImage('8', "on");
       }
       else {
         $("#state_lamp8").attr("src","images/luz_apagada.png");
         $("#btn_lamp8").html("Acender");
             desligaDespositivo(8);
             mostraBits(getDisplay());
+            updateImage('1', "off");
       }
     });
 });
