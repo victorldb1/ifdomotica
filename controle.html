@@ -71,7 +71,14 @@
         break;
     }
   }
-  window.onload = function(){
+  var guardaDisplay;
+  function updateDisplay(guardaDisplay){
+    const fbdisplay = firebase.database().ref();
+    aux_display = {guardaDisplay};
+    fbdisplay.child('display/').update(aux_display);
+  }
+
+$(document).ready(function(){
     var rootRef = firebase.database().ref().child('numeros');
     rootRef.on('value', function(snapshot){
       $('#display').html(snapshot.child('bit').val());
@@ -79,42 +86,59 @@
     var imgRef = firebase.database().ref().child('Lampadas/lamp1');
     imgRef.on('value', function(snapshot){
       $('#state_lamp1').attr("src",snapshot.child('estado').val());
+      if(snapshot.child('estado').val() == "images/luz_apagada.png"){ $("#btn_lamp1").html("Acender"); }
+        else{$("#btn_lamp1").html("Apagar");}
     })
     var imgRef = firebase.database().ref().child('Lampadas/lamp2');
     imgRef.on('value', function(snapshot){
       $('#state_lamp2').attr("src",snapshot.child('estado').val());
+      if(snapshot.child('estado').val() == "images/luz_apagada.png"){ $("#btn_lamp2").html("Acender"); }
+        else{$("#btn_lamp2").html("Apagar");}
     })
     var imgRef = firebase.database().ref().child('Lampadas/lamp3');
     imgRef.on('value', function(snapshot){
       $('#state_lamp3').attr("src",snapshot.child('estado').val());
+      if(snapshot.child('estado').val() == "images/luz_apagada.png"){ $("#btn_lamp3").html("Acender"); }
+        else{$("#btn_lamp3").html("Apagar");}
     })
     var imgRef = firebase.database().ref().child('Lampadas/lamp4');
     imgRef.on('value', function(snapshot){
       $('#state_lamp4').attr("src",snapshot.child('estado').val());
+      if(snapshot.child('estado').val() == "images/luz_apagada.png"){ $("#btn_lamp4").html("Acender"); }
+        else{$("#btn_lamp4").html("Apagar");}
     })
     var imgRef = firebase.database().ref().child('Lampadas/lamp5');
     imgRef.on('value', function(snapshot){
       $('#state_lamp5').attr("src",snapshot.child('estado').val());
+      if(snapshot.child('estado').val() == "images/luz_apagada.png"){ $("#btn_lamp5").html("Acender"); }
+        else{$("#btn_lamp5").html("Apagar");}
     })
     var imgRef = firebase.database().ref().child('Lampadas/lamp6');
     imgRef.on('value', function(snapshot){
       $('#state_lamp6').attr("src",snapshot.child('estado').val());
+      if(snapshot.child('estado').val() == "images/luz_apagada.png"){ $("#btn_lamp6").html("Acender"); }
+        else{$("#btn_lamp6").html("Apagar");}
     })
     var imgRef = firebase.database().ref().child('Lampadas/lamp7');
     imgRef.on('value', function(snapshot){
       $('#state_lamp7').attr("src",snapshot.child('estado').val());
+      if(snapshot.child('estado').val() == "images/luz_apagada.png"){ $("#btn_lamp7").html("Acender"); }
+        else{$("#btn_lamp7").html("Apagar");}
     })
     var imgRef = firebase.database().ref().child('Lampadas/lamp8');
     imgRef.on('value', function(snapshot){
       $('#state_lamp8').attr("src",snapshot.child('estado').val());
+      if(snapshot.child('estado').val() == "images/luz_apagada.png"){ $("#btn_lamp8").html("Acender"); }
+        else{$("#btn_lamp8").html("Apagar");}
     })
-  }
+    var display;
+    var displayRef = firebase.database().ref().child('display');
+    displayRef.on('value', function(snapshot){
+      display = snapshot.child('guardaDisplay').val();
+    }) 
 
-var _n, _x, display=0, _display;
-function setDisplay(_display) {display = _display;}
-function getDisplay() {return display;}
 function mostraBits(_x){
-    var retorno = "";
+    var retorno="";
     var aux = 128;
     for (var i=0; i<8; ++i){
         if ( (_x&aux) != 0) retorno += "1";
@@ -127,12 +151,13 @@ function mostraBits(_x){
 function ligaDispositivo(_n){
     var aux = 1 << (parseInt(_n)-1);
     display = display | aux;
+    updateDisplay(display);
 }
 function desligaDespositivo(_n){
     var aux = 1 << (parseInt(_n)-1);
     display = display & ~aux;
+    updateDisplay(display);
 }
-$(document).ready(function(){
 
     $("#btn_all").click(function(){
             updateImage('1', "off");
@@ -143,157 +168,116 @@ $(document).ready(function(){
             updateImage('6', "off");
             updateImage('7', "off");
             updateImage('8', "off");
-            $("#btn_lamp1").html("Acender");
-            $("#btn_lamp2").html("Acender");
-            $("#btn_lamp3").html("Acender");
-            $("#btn_lamp4").html("Acender");
-            $("#btn_lamp5").html("Acender");
-            $("#btn_lamp6").html("Acender");
-            $("#btn_lamp7").html("Acender");
-            $("#btn_lamp8").html("Acender");
-            setDisplay(0);
             mostraBits();
+            display = 0;
+            updateDisplay(display);
     });    
   //imagem 1
     $("#btn_lamp1").click(function(){
       if($("#state_lamp1").attr("src") == "images/luz_apagada.png"){
-        $("#state_lamp1").attr("src","images/luz_acesa.png");
-        $("#btn_lamp1").html("Apagar");
             ligaDispositivo(1);
-            mostraBits(getDisplay());
+            mostraBits(display);
             updateImage('1', "on");
       }
       else {
-        $("#state_lamp1").attr("src","images/luz_apagada.png");
-        $("#btn_lamp1").html("Acender");
             desligaDespositivo(1);
-            mostraBits(getDisplay());
+            mostraBits(display);
             updateImage('1', "off")
       }
     });
     //imagem 2
     $("#btn_lamp2").click(function(){
       if($("#state_lamp2").attr("src") == "images/luz_apagada.png"){
-        $("#state_lamp2").attr("src","images/luz_acesa.png");
-        $("#btn_lamp2").html("Apagar");
             ligaDispositivo(2);
-            mostraBits(getDisplay());
+            mostraBits(display);
             updateImage('2', "on");
       }
       else {
-        $("#state_lamp2").attr("src","images/luz_apagada.png");
-        $("#btn_lamp2").html("Acender");
             desligaDespositivo(2);
-            mostraBits(getDisplay());
+            mostraBits(display);
             updateImage('2', "off");
       }
     });
     //imagem 3
     $("#btn_lamp3").click(function(){
       if($("#state_lamp3").attr("src") == "images/luz_apagada.png"){
-        $("#state_lamp3").attr("src","images/luz_acesa.png");
-        $("#btn_lamp3").html("Apagar");
             ligaDispositivo(3);
-            mostraBits(getDisplay());
+            mostraBits(display);
             updateImage('3', "on");
       }
       else {
-        $("#state_lamp3").attr("src","images/luz_apagada.png");
-        $("#btn_lamp3").html("Acender");
             desligaDespositivo(3);
-            mostraBits(getDisplay());
+            mostraBits(display);
             updateImage('3', "off");
       }
     });
     //imagem 4
     $("#btn_lamp4").click(function(){
       if($("#state_lamp4").attr("src") == "images/luz_apagada.png"){
-        $("#state_lamp4").attr("src","images/luz_acesa.png");
-        $("#btn_lamp4").html("Apagar");            
             ligaDispositivo(4);
-            mostraBits(getDisplay());
+            mostraBits(display);
             updateImage('4', "on");
       }
       else {
-        $("#state_lamp4").attr("src","images/luz_apagada.png");
-        $("#btn_lamp4").html("Acender");
             desligaDespositivo(4);
-            mostraBits(getDisplay());
+            mostraBits(display);
             updateImage('4', "off");
       }
     });
     //imagem 5
     $("#btn_lamp5").click(function(){
       if($("#state_lamp5").attr("src") == "images/luz_apagada.png"){
-        $("#state_lamp5").attr("src","images/luz_acesa.png");
-        $("#btn_lamp5").html("Apagar");
             ligaDispositivo(5);
-            mostraBits(getDisplay());
+            mostraBits(display);
             updateImage('5', "on");
       }
       else {
-        $("#state_lamp5").attr("src","images/luz_apagada.png");
-        $("#btn_lamp5").html("Acender");
             desligaDespositivo(5);
-            mostraBits(getDisplay());
+            mostraBits(display);
             updateImage('5', "off");
       }
     });
     //imagem 6
     $("#btn_lamp6").click(function(){
       if($("#state_lamp6").attr("src") == "images/luz_apagada.png"){
-        $("#state_lamp6").attr("src","images/luz_acesa.png");
-        $("#btn_lamp6").html("Apagar");
-            ligaDispositivo(6);
-            mostraBits(getDisplay());
+        ligaDispositivo(6);
+            mostraBits(display);
             updateImage('6', "on");
       }
       else {
-        $("#state_lamp6").attr("src","images/luz_apagada.png");
-        $("#btn_lamp6").html("Acender");
             desligaDespositivo(6);
-            mostraBits(getDisplay());
+            mostraBits(display);
             updateImage('6', "off");
       }
     });
     //imagem 7
     $("#btn_lamp7").click(function(){
-      if($("#state_lamp7").attr("src") == "images/luz_apagada.png"){
-        $("#state_lamp7").attr("src","images/luz_acesa.png");
-        $("#btn_lamp7").html("Apagar");            
+      if($("#state_lamp7").attr("src") == "images/luz_apagada.png"){          
             ligaDispositivo(7);
-            mostraBits(getDisplay());
+            mostraBits(display);
             updateImage('7', "on");
       }
       else {
-        $("#state_lamp7").attr("src","images/luz_apagada.png");
-        $("#btn_lamp7").html("Acender");
             desligaDespositivo(7);
-            mostraBits(getDisplay());
+            mostraBits(display);
             updateImage('7', "off");
       }
     });
     //imagem 8
     $("#btn_lamp8").click(function(){
       if($("#state_lamp8").attr("src") == "images/luz_apagada.png"){
-        $("#state_lamp8").attr("src","images/luz_acesa.png");
-        $("#btn_lamp8").html("Apagar");
             ligaDispositivo(8);
-            mostraBits(getDisplay());
+            mostraBits(display);
             updateImage('8', "on");
       }
       else {
-        $("#state_lamp8").attr("src","images/luz_apagada.png");
-        $("#btn_lamp8").html("Acender");
             desligaDespositivo(8);
-            mostraBits(getDisplay());
+            mostraBits(display);
             updateImage('8', "off");
       }
     });
 });
 </script>
-  <script type="text/javascript">
-  </script>
 </head>
 <body>
 
@@ -327,7 +311,7 @@ $(document).ready(function(){
 
           <div class="row text-center">
             <div class="col-12">
-              <h4><label id="display" hidden=""></label></h4>
+              <h4><label id="display"></label></h4>
               <button type="button" id="btn_all" class="btn btn-outline-light btn-block">Apagar Tudo</button>
               <br/>
             </div>
@@ -337,7 +321,7 @@ $(document).ready(function(){
   					<div class="col-6 col-sm-6 col-md-3">
   						<h4>Lampada 1</h4>
         			<img src="images/luz_apagada.png" id="state_lamp1" class="img-fluid mx-auto d-block">
-						  <button type="button" id="btn_lamp1" class="btn btn-outline-light btn-block" onclick="">Acender</button>
+						  <button type="button" id="btn_lamp1" class="btn btn-outline-light btn-block">Acender</button>
   					</div>
   					<div class="col-6 col-sm-6 col-md-3">
   						<h4>Lampada 2</h4>
