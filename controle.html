@@ -76,7 +76,6 @@
     rootRef.on('value', function(snapshot){
       $('#display').html(snapshot.child('bit').val());
     }) 
-
     var imgRef = firebase.database().ref().child('Lampadas/lamp1');
     imgRef.on('value', function(snapshot){
       $('#state_lamp1').attr("src",snapshot.child('estado').val());
@@ -328,7 +327,7 @@ $(document).ready(function(){
 
           <div class="row text-center">
             <div class="col-12">
-              <h4><label id="display"></label></h4>
+              <h4><label id="display" hidden=""></label></h4>
               <button type="button" id="btn_all" class="btn btn-outline-light btn-block">Apagar Tudo</button>
               <br/>
             </div>
