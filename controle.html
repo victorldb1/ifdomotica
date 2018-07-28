@@ -136,15 +136,15 @@ function desligaDespositivo(_n){
 $(document).ready(function(){
 
     $("#btn_all").click(function(){
-            $("#state_lamp1").attr("src","images/luz_apagada.png");
-            $("#state_lamp2").attr("src","images/luz_apagada.png");
-            $("#state_lamp3").attr("src","images/luz_apagada.png");
-            $("#state_lamp4").attr("src","images/luz_apagada.png");
-            $("#state_lamp5").attr("src","images/luz_apagada.png");
-            $("#state_lamp6").attr("src","images/luz_apagada.png");
-            $("#state_lamp7").attr("src","images/luz_apagada.png");
-            $("#state_lamp8").attr("src","images/luz_apagada.png");
 
+            updateImage('1', "off");
+            updateImage('2', "off");
+            updateImage('3', "off");
+            updateImage('4', "off");
+            updateImage('5', "off");
+            updateImage('6', "off");
+            updateImage('7', "off");
+            updateImage('8', "off");
             $("#btn_lamp1").html("Acender");
             $("#btn_lamp2").html("Acender");
             $("#btn_lamp3").html("Acender");
