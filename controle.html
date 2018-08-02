@@ -6,6 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <link rel="stylesheet" href="css/bootstrap.min.css">
 	<script type="text/javascript" src="js/jquery.min.js"></script>
+	<script type="text/javascript" src="js/bitwise.js"></script>
   <script src="https://www.gstatic.com/firebasejs/5.0.3/firebase.js"></script>
   <script>
     // Initialize Firebase
@@ -77,22 +78,10 @@
     fbdisplay.child('display/').update(aux_display);
   }
 
-
-
 $(document).ready(function(){
-  function setArduino(){
-      document.getElementById("myForm").submit();
-}
-var flag = false;
     var rootRef = firebase.database().ref().child('numeros');
     rootRef.on('value', function(snapshot){
       $('#display').html(snapshot.child('bit').val());
-      $('#display2').attr("value",snapshot.child('bit').val());
-      
-      if(flag){
-        setArduino();
-      }
-      flag=true;
     }) 
     var imgRef = firebase.database().ref().child('Lampadas/lamp1');
     imgRef.on('value', function(snapshot){
@@ -182,7 +171,6 @@ function desligaDespositivo(_n){
             mostraBits();
             display = 0;
             updateDisplay(display);
-            //setArduino();
     });    
   //imagem 1
     $("#btn_lamp1").click(function(){
@@ -196,7 +184,6 @@ function desligaDespositivo(_n){
             mostraBits(display);
             updateImage('1', "off")
       }
-      //setArduino();
     });
     //imagem 2
     $("#btn_lamp2").click(function(){
@@ -210,7 +197,6 @@ function desligaDespositivo(_n){
             mostraBits(display);
             updateImage('2', "off");
       }
-      //setArduino();
     });
     //imagem 3
     $("#btn_lamp3").click(function(){
@@ -224,7 +210,6 @@ function desligaDespositivo(_n){
             mostraBits(display);
             updateImage('3', "off");
       }
-      //setArduino();
     });
     //imagem 4
     $("#btn_lamp4").click(function(){
@@ -238,7 +223,6 @@ function desligaDespositivo(_n){
             mostraBits(display);
             updateImage('4', "off");
       }
-      //setArduino();
     });
     //imagem 5
     $("#btn_lamp5").click(function(){
@@ -252,7 +236,6 @@ function desligaDespositivo(_n){
             mostraBits(display);
             updateImage('5', "off");
       }
-      //setArduino();
     });
     //imagem 6
     $("#btn_lamp6").click(function(){
@@ -266,7 +249,6 @@ function desligaDespositivo(_n){
             mostraBits(display);
             updateImage('6', "off");
       }
-      //setArduino();
     });
     //imagem 7
     $("#btn_lamp7").click(function(){
@@ -280,7 +262,6 @@ function desligaDespositivo(_n){
             mostraBits(display);
             updateImage('7', "off");
       }
-      //setArduino();
     });
     //imagem 8
     $("#btn_lamp8").click(function(){
@@ -294,7 +275,6 @@ function desligaDespositivo(_n){
             mostraBits(display);
             updateImage('8', "off");
       }
-      //setArduino();
     });
 });
 </script>
@@ -331,10 +311,7 @@ function desligaDespositivo(_n){
 
           <div class="row text-center">
             <div class="col-12">
-              <form id="myForm" name="formulario" method="post" action="https://ligararduinophp.000webhostapp.com/arduino.php">
-                <input type="hidden" id="display2" name="display2">  
-              </form>
-              <h4><label hidden id="display"></label></h4>
+              <h4><label id="display"></label></h4>
               <button type="button" id="btn_all" class="btn btn-outline-light btn-block">Apagar Tudo</button>
               <br/>
             </div>
@@ -344,7 +321,7 @@ function desligaDespositivo(_n){
   					<div class="col-6 col-sm-6 col-md-3">
   						<h4>Lampada 1</h4>
         			<img src="images/luz_apagada.png" id="state_lamp1" class="img-fluid mx-auto d-block">
-						  <button type="button" id="btn_lamp1"  class="btn btn-outline-light btn-block">Acender</button>
+						  <button type="button" id="btn_lamp1" class="btn btn-outline-light btn-block">Acender</button>
   					</div>
   					<div class="col-6 col-sm-6 col-md-3">
   						<h4>Lampada 2</h4>
