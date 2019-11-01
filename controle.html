@@ -46,7 +46,7 @@ $(document).ready(function(){
       $('#display').html(snapshot.child('bit').val());
     }) 
 
-    function atualizaFirebase(var lampada){
+    function atualizaFirebase(lampada){
     	$('#state_lamp'+lampada).attr("src",snapshot.child('estado').val());
       	if(snapshot.child('estado').val() == "images/luz_apagada.png"){ $("#btn_lamp"+lampada).html("Acender"); }
         else{$("#btn_lamp"+lampada).html("Apagar");}
