@@ -45,16 +45,7 @@ $(document).ready(function(){
     rootRef.on('value', function(snapshot){
       $('#display').html(snapshot.child('bit').val());
     }) 
-    var imgRef;
-   for(var i = 1; i < 9; i++ ){
-   	imgRef = firebase.database().ref().child('Lampadas/lamp'+i);
-    	imgRef.on('value', function(snapshot){
-      		$('#state_lamp'+i).attr("src",snapshot.child('estado').val());
-      		if(snapshot.child('estado').val() == "images/luz_apagada.png"){ $("#btn_lamp"+i).html("Acender"); }
-        	else{$("#btn_lamp"+i).html("Apagar");}
-    	})
-   }
-	/*
+
     var imgRef = firebase.database().ref().child('Lampadas/lamp1');
     imgRef.on('value', function(snapshot){
       $('#state_lamp1').attr("src",snapshot.child('estado').val());
@@ -102,7 +93,7 @@ $(document).ready(function(){
       $('#state_lamp8').attr("src",snapshot.child('estado').val());
       if(snapshot.child('estado').val() == "images/luz_apagada.png"){ $("#btn_lamp8").html("Acender"); }
         else{$("#btn_lamp8").html("Apagar");}
-    })*/
+    })
     var display;
     var displayRef = firebase.database().ref().child('display');
     displayRef.on('value', function(snapshot){
