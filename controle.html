@@ -46,7 +46,7 @@ $(document).ready(function(){
       $('#display').html(snapshot.child('bit').val());
     }) 
 
-    function atualizaFirebase(lampada){
+    function atualizaFirebase(lampada, snapshot){
     	$('#state_lamp'+lampada).attr("src",snapshot.child('estado').val());
       	if(snapshot.child('estado').val() == "images/luz_apagada.png"){ $("#btn_lamp"+lampada).html("Acender"); }
         else{$("#btn_lamp"+lampada).html("Apagar");}
@@ -54,35 +54,35 @@ $(document).ready(function(){
     
     var imgRef = firebase.database().ref().child('Lampadas/lamp1');
     imgRef.on('value', function(snapshot){
-      	atualizaFirebase(1);
+      	atualizaFirebase(1, snapshot);
     })
     var imgRef = firebase.database().ref().child('Lampadas/lamp2');
     imgRef.on('value', function(snapshot){
-      	atualizaFirebase(2);
+      	atualizaFirebase(2, snapshot);
     })
     var imgRef = firebase.database().ref().child('Lampadas/lamp3');
     imgRef.on('value', function(snapshot){
-      	atualizaFirebase(3);
+      	atualizaFirebase(3, snapshot);
     })
     var imgRef = firebase.database().ref().child('Lampadas/lamp4');
     imgRef.on('value', function(snapshot){
-      	atualizaFirebase(4);
+      	atualizaFirebase(4, snapshot);
     })
     var imgRef = firebase.database().ref().child('Lampadas/lamp5');
     imgRef.on('value', function(snapshot){
-      	atualizaFirebase(5);
+      	atualizaFirebase(5, snapshot);
     })
     var imgRef = firebase.database().ref().child('Lampadas/lamp6');
     imgRef.on('value', function(snapshot){
-      	atualizaFirebase(6);
+      	atualizaFirebase(6, snapshot);
     })
     var imgRef = firebase.database().ref().child('Lampadas/lamp7');
     imgRef.on('value', function(snapshot){
-      	atualizaFirebase(7);
+      	atualizaFirebase(7, snapshot);
     })
     var imgRef = firebase.database().ref().child('Lampadas/lamp8');
     imgRef.on('value', function(snapshot){
-      	atualizaFirebase(8);
+      	atualizaFirebase(8, snapshot);
     })
     
 	/*
