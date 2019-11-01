@@ -127,6 +127,23 @@ function desligaDespositivo(_n){
             display = 0;
             updateDisplay(display);
     });    
+	
+   //teste
+	$("#btn_lamp").click(function(){
+      if($("#state_lamp"+$(this).val()).attr("src") == "images/luz_apagada.png"){
+            ligaDispositivo($(this).val());
+            mostraBits(display);
+            updateImage($(this).val(), "on");
+      }
+      else {
+            desligaDespositivo($(this).val());
+            mostraBits(display);
+            updateImage($(this).val(), "off")
+      }
+    });
+   //fim teste
+	
+	/*
   //imagem 1
     $("#btn_lamp1").click(function(){
 	    alert($(this).val());
@@ -231,7 +248,7 @@ function desligaDespositivo(_n){
             mostraBits(display);
             updateImage('8', "off");
       }
-    });
+    });*/
 });
 </script>
 </head>
@@ -277,22 +294,22 @@ function desligaDespositivo(_n){
   					<div class="col-6 col-sm-6 col-md-3">
   						<h4>Lampada 1</h4>
         			<img src="images/luz_apagada.png" id="state_lamp1" class="img-fluid mx-auto d-block">
-						  <button type="button" id="btn_lamp1" value="1" class="btn btn-outline-light btn-block">Acender</button>
+						  <button type="button" id="btn_lamp" value="1" class="btn btn-outline-light btn-block">Acender</button>
   					</div>
   					<div class="col-6 col-sm-6 col-md-3">
   						<h4>Lampada 2</h4>
         			<img src="images/luz_apagada.png" id="state_lamp2" class="img-fluid mx-auto d-block">
-						  <button type="button" id="btn_lamp2" class="btn btn-outline-light btn-block">Acender</button>
+						  <button type="button" id="btn_lamp" class="btn btn-outline-light btn-block">Acender</button>
   					</div>
  					  <div class="col-6 col-sm-6 col-md-3">
   						<h4>Lampada 3</h4>
         			<img src="images/luz_apagada.png" id="state_lamp3" class="img-fluid mx-auto d-block">
-						  <button type="button" id="btn_lamp3" class="btn btn-outline-light btn-block">Acender</button>
+						  <button type="button" id="btn_lamp" class="btn btn-outline-light btn-block">Acender</button>
  					  </div>
   					<div class="col-6 col-sm-6 col-md-3">
   						<h4>Lampada 4</h4>
         			<img src="images/luz_apagada.png" id="state_lamp4" class="img-fluid mx-auto d-block">
-						  <button type="button" id="btn_lamp4" class="btn btn-outline-light btn-block">Acender</button>
+						  <button type="button" id="btn_lamp" class="btn btn-outline-light btn-block">Acender</button>
   					</div>
 				  </div><br/>
 				  <div class="row text-center">
