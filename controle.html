@@ -27,47 +27,28 @@
   }
   var lamp, paraEstado;
   function updateImage(lamp, paraEstado){
-    const f = firebase.database().ref('Lampadas');
+    const f = firebase.database().ref('Lampadas');  
+    if (paraEstado == "off"){ 
+      estado='images/luz_apagada.png';}
+      else { estado='images/luz_acesa.png'; }
+      img = {estado};
+	  
     switch(lamp){
-      case '1': if (paraEstado == "off"){ estado='images/luz_apagada.png';}
-              else { estado='images/luz_acesa.png'; }
-              img = {estado};
-              f.child('lamp1/').update(img);
+      case '1': f.child('lamp1/').update(img);
         break;
-      case '2': if (paraEstado == "off"){ estado='images/luz_apagada.png';}
-              else { estado='images/luz_acesa.png'; }
-              img = {estado};
-              f.child('lamp2/').update(img);
+      case '2': f.child('lamp2/').update(img);
         break;
-      case '3': if (paraEstado == "off"){ estado='images/luz_apagada.png';}
-              else { estado='images/luz_acesa.png'; }
-              img = {estado};
-              f.child('lamp3/').update(img);
+      case '3': f.child('lamp3/').update(img);
         break;
-      case '4': if (paraEstado == "off"){ estado='images/luz_apagada.png';}
-              else { estado='images/luz_acesa.png'; }
-              img = {estado};
-              f.child('lamp4/').update(img);
+      case '4': f.child('lamp4/').update(img);
         break;
-      case '5': if (paraEstado == "off"){ estado='images/luz_apagada.png';}
-              else { estado='images/luz_acesa.png'; }
-              img = {estado};
-              f.child('lamp5/').update(img);
+      case '5': f.child('lamp5/').update(img);
         break;
-      case '6': if (paraEstado == "off"){ estado='images/luz_apagada.png';}
-              else { estado='images/luz_acesa.png'; }
-              img = {estado};
-              f.child('lamp6/').update(img);
+      case '6': f.child('lamp6/').update(img);
         break;
-      case '7': if (paraEstado == "off"){ estado='images/luz_apagada.png';}
-              else { estado='images/luz_acesa.png'; }
-              img = {estado};
-              f.child('lamp7/').update(img);
+      case '7': f.child('lamp7/').update(img);
         break;
-      case '8': if (paraEstado == "off"){ estado='images/luz_apagada.png';}
-              else { estado='images/luz_acesa.png'; }
-              img = {estado};
-              f.child('lamp8/').update(img);
+      case '8': f.child('lamp8/').update(img);
         break;
     }
   }
