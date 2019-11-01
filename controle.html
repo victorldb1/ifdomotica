@@ -46,6 +46,19 @@ $(document).ready(function(){
       $('#display').html(snapshot.child('bit').val());
     }) 
 
+    function atualizaFirebase(var lampada){
+    	$('#state_lamp'+lampada).attr("src",snapshot.child('estado').val());
+      	if(snapshot.child('estado').val() == "images/luz_apagada.png"){ $("#btn_lamp"+lampada).html("Acender"); }
+        else{$("#btn_lamp"+lampada).html("Apagar");}
+    }
+    
+    var imgRef = firebase.database().ref().child('Lampadas/lamp1');
+    imgRef.on('value', function(snapshot){
+      	atualizaFirebase(1);
+    })
+	
+	
+	/*
     var imgRef = firebase.database().ref().child('Lampadas/lamp1');
     imgRef.on('value', function(snapshot){
       $('#state_lamp1').attr("src",snapshot.child('estado').val());
@@ -93,7 +106,7 @@ $(document).ready(function(){
       $('#state_lamp8').attr("src",snapshot.child('estado').val());
       if(snapshot.child('estado').val() == "images/luz_apagada.png"){ $("#btn_lamp8").html("Acender"); }
         else{$("#btn_lamp8").html("Apagar");}
-    })
+    })*/
     var display;
     var displayRef = firebase.database().ref().child('display');
     displayRef.on('value', function(snapshot){
