@@ -56,8 +56,35 @@ $(document).ready(function(){
     imgRef.on('value', function(snapshot){
       	atualizaFirebase(1);
     })
-	
-	
+    var imgRef = firebase.database().ref().child('Lampadas/lamp2');
+    imgRef.on('value', function(snapshot){
+      	atualizaFirebase(2);
+    })
+    var imgRef = firebase.database().ref().child('Lampadas/lamp3');
+    imgRef.on('value', function(snapshot){
+      	atualizaFirebase(3);
+    })
+    var imgRef = firebase.database().ref().child('Lampadas/lamp4');
+    imgRef.on('value', function(snapshot){
+      	atualizaFirebase(4);
+    })
+    var imgRef = firebase.database().ref().child('Lampadas/lamp5');
+    imgRef.on('value', function(snapshot){
+      	atualizaFirebase(5);
+    })
+    var imgRef = firebase.database().ref().child('Lampadas/lamp6');
+    imgRef.on('value', function(snapshot){
+      	atualizaFirebase(6);
+    })
+    var imgRef = firebase.database().ref().child('Lampadas/lamp7');
+    imgRef.on('value', function(snapshot){
+      	atualizaFirebase(7);
+    })
+    var imgRef = firebase.database().ref().child('Lampadas/lamp8');
+    imgRef.on('value', function(snapshot){
+      	atualizaFirebase(8);
+    })
+    
 	/*
     var imgRef = firebase.database().ref().child('Lampadas/lamp1');
     imgRef.on('value', function(snapshot){
