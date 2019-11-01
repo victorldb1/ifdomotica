@@ -128,8 +128,7 @@ function desligaDespositivo(_n){
             updateDisplay(display);
     });    
 	
-   //teste
-	$(".btn_lamp").click(function(){
+    $(".btn_lamp").click(function(){
       if($("#state_lamp"+$(this).val()).attr("src") == "images/luz_apagada.png"){
             ligaDispositivo($(this).val());
             mostraBits(display);
@@ -141,114 +140,6 @@ function desligaDespositivo(_n){
             updateImage($(this).val(), "off")
       }
     });
-   //fim teste
-	
-	/*
-  //imagem 1
-    $("#btn_lamp1").click(function(){
-	    alert($(this).val());
-      if($("#state_lamp1").attr("src") == "images/luz_apagada.png"){
-            ligaDispositivo(1);
-            mostraBits(display);
-            updateImage('1', "on");
-      }
-      else {
-            desligaDespositivo(1);
-            mostraBits(display);
-            updateImage('1', "off")
-      }
-    });
-    //imagem 2
-    $("#btn_lamp2").click(function(){
-      if($("#state_lamp2").attr("src") == "images/luz_apagada.png"){
-            ligaDispositivo(2);
-            mostraBits(display);
-            updateImage('2', "on");
-      }
-      else {
-            desligaDespositivo(2);
-            mostraBits(display);
-            updateImage('2', "off");
-      }
-    });
-    //imagem 3
-    $("#btn_lamp3").click(function(){
-      if($("#state_lamp3").attr("src") == "images/luz_apagada.png"){
-            ligaDispositivo(3);
-            mostraBits(display);
-            updateImage('3', "on");
-      }
-      else {
-            desligaDespositivo(3);
-            mostraBits(display);
-            updateImage('3', "off");
-      }
-    });
-    //imagem 4
-    $("#btn_lamp4").click(function(){
-      if($("#state_lamp4").attr("src") == "images/luz_apagada.png"){
-            ligaDispositivo(4);
-            mostraBits(display);
-            updateImage('4', "on");
-      }
-      else {
-            desligaDespositivo(4);
-            mostraBits(display);
-            updateImage('4', "off");
-      }
-    });
-    //imagem 5
-    $("#btn_lamp5").click(function(){
-      if($("#state_lamp5").attr("src") == "images/luz_apagada.png"){
-            ligaDispositivo(5);
-            mostraBits(display);
-            updateImage('5', "on");
-      }
-      else {
-            desligaDespositivo(5);
-            mostraBits(display);
-            updateImage('5', "off");
-      }
-    });
-    //imagem 6
-    $("#btn_lamp6").click(function(){
-      if($("#state_lamp6").attr("src") == "images/luz_apagada.png"){
-        ligaDispositivo(6);
-            mostraBits(display);
-            updateImage('6', "on");
-      }
-      else {
-            desligaDespositivo(6);
-            mostraBits(display);
-            updateImage('6', "off");
-      }
-    });
-    //imagem 7
-    $("#btn_lamp7").click(function(){
-      if($("#state_lamp7").attr("src") == "images/luz_apagada.png"){          
-            ligaDispositivo(7);
-            mostraBits(display);
-            updateImage('7', "on");
-      }
-      else {
-            desligaDespositivo(7);
-            mostraBits(display);
-            updateImage('7', "off");
-      }
-    });
-    //imagem 8
-    $("#btn_lamp8").click(function(){
-      if($("#state_lamp8").attr("src") == "images/luz_apagada.png"){
-            ligaDispositivo(8);
-            mostraBits(display);
-            updateImage('8', "on");
-      }
-      else {
-            desligaDespositivo(8);
-            mostraBits(display);
-            updateImage('8', "off");
-      }
-    });*/
 });
 </script>
 </head>
@@ -316,22 +207,22 @@ function desligaDespositivo(_n){
   				  <div class="col-6 col-sm-6 col-md-3">
   					  <h4>Lampada 5</h4>
         			<img src="images/luz_apagada.png" id="state_lamp5" class="img-fluid mx-auto d-block">
-						  <button type="button" id="btn_lamp5" class="btn btn-outline-light btn-block">Acender</button>
+						  <button type="button" value="5" class="btn btn-outline-light btn-block btn_lamp">Acender</button>
   					</div>
   					<div class="col-6 col-sm-6 col-md-3">
   						<h4>Lampada 6</h4>
         			<img src="images/luz_apagada.png" id="state_lamp6" class="img-fluid mx-auto d-block">
-						  <button type="button" id="btn_lamp6" class="btn btn-outline-light btn-block">Acender</button>
+						  <button type="button" value="6" class="btn btn-outline-light btn-block btn_lamp">Acender</button>
   					</div>
  					  <div class="col-6 col-sm-6 col-md-3">
   						<h4>Lampada 7</h4>
         			<img src="images/luz_apagada.png" id="state_lamp7" class="img-fluid mx-auto d-block">
-						  <button type="button" id="btn_lamp7" class="btn btn-outline-light btn-block">Acender</button>
+						  <button type="button" value="7" class="btn btn-outline-light btn-block btn_lamp">Acender</button>
  					  </div>
   					<div class="col-6 col-sm-6 col-md-3">
   						<h4>Lampada 8</h4>
         			<img src="images/luz_apagada.png" id="state_lamp8" class="img-fluid mx-auto d-block">
-						  <button type="button" id="btn_lamp8" class="btn btn-outline-light btn-block">Acender</button>
+						  <button type="button" value="8" class="btn btn-outline-light btn-block btn_lamp">Acender</button>
   					</div>
 				  </div>
         <br/>
