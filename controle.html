@@ -45,9 +45,9 @@ $(document).ready(function(){
     rootRef.on('value', function(snapshot){
       $('#display').html(snapshot.child('bit').val());
     }) 
-    
+    var imgRef;
    for(var i = 1; i < 9; i++ ){
-   	var imgRef = firebase.database().ref().child('Lampadas/lamp'+i);
+   	imgRef = firebase.database().ref().child('Lampadas/lamp'+i);
     	imgRef.on('value', function(snapshot){
       		$('#state_lamp'+i).attr("src",snapshot.child('estado').val());
       		if(snapshot.child('estado').val() == "images/luz_apagada.png"){ $("#btn_lamp"+i).html("Acender"); }
