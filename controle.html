@@ -85,55 +85,7 @@ $(document).ready(function(){
       	atualizaFirebase(8, snapshot);
     })
     
-	/*
-    var imgRef = firebase.database().ref().child('Lampadas/lamp1');
-    imgRef.on('value', function(snapshot){
-      $('#state_lamp1').attr("src",snapshot.child('estado').val());
-      if(snapshot.child('estado').val() == "images/luz_apagada.png"){ $("#btn_lamp1").html("Acender"); }
-        else{$("#btn_lamp1").html("Apagar");}
-    })
-    var imgRef = firebase.database().ref().child('Lampadas/lamp2');
-    imgRef.on('value', function(snapshot){
-      $('#state_lamp2').attr("src",snapshot.child('estado').val());
-      if(snapshot.child('estado').val() == "images/luz_apagada.png"){ $("#btn_lamp2").html("Acender"); }
-        else{$("#btn_lamp2").html("Apagar");}
-    })
-    var imgRef = firebase.database().ref().child('Lampadas/lamp3');
-    imgRef.on('value', function(snapshot){
-      $('#state_lamp3').attr("src",snapshot.child('estado').val());
-      if(snapshot.child('estado').val() == "images/luz_apagada.png"){ $("#btn_lamp3").html("Acender"); }
-        else{$("#btn_lamp3").html("Apagar");}
-    })
-    var imgRef = firebase.database().ref().child('Lampadas/lamp4');
-    imgRef.on('value', function(snapshot){
-      $('#state_lamp4').attr("src",snapshot.child('estado').val());
-      if(snapshot.child('estado').val() == "images/luz_apagada.png"){ $("#btn_lamp4").html("Acender"); }
-        else{$("#btn_lamp4").html("Apagar");}
-    })
-    var imgRef = firebase.database().ref().child('Lampadas/lamp5');
-    imgRef.on('value', function(snapshot){
-      $('#state_lamp5').attr("src",snapshot.child('estado').val());
-      if(snapshot.child('estado').val() == "images/luz_apagada.png"){ $("#btn_lamp5").html("Acender"); }
-        else{$("#btn_lamp5").html("Apagar");}
-    })
-    var imgRef = firebase.database().ref().child('Lampadas/lamp6');
-    imgRef.on('value', function(snapshot){
-      $('#state_lamp6').attr("src",snapshot.child('estado').val());
-      if(snapshot.child('estado').val() == "images/luz_apagada.png"){ $("#btn_lamp6").html("Acender"); }
-        else{$("#btn_lamp6").html("Apagar");}
-    })
-    var imgRef = firebase.database().ref().child('Lampadas/lamp7');
-    imgRef.on('value', function(snapshot){
-      $('#state_lamp7').attr("src",snapshot.child('estado').val());
-      if(snapshot.child('estado').val() == "images/luz_apagada.png"){ $("#btn_lamp7").html("Acender"); }
-        else{$("#btn_lamp7").html("Apagar");}
-    })
-    var imgRef = firebase.database().ref().child('Lampadas/lamp8');
-    imgRef.on('value', function(snapshot){
-      $('#state_lamp8').attr("src",snapshot.child('estado').val());
-      if(snapshot.child('estado').val() == "images/luz_apagada.png"){ $("#btn_lamp8").html("Acender"); }
-        else{$("#btn_lamp8").html("Apagar");}
-    })*/
+	
     var display;
     var displayRef = firebase.database().ref().child('display');
     displayRef.on('value', function(snapshot){
@@ -177,6 +129,7 @@ function desligaDespositivo(_n){
     });    
   //imagem 1
     $("#btn_lamp1").click(function(){
+	    alert($this.val());
       if($("#state_lamp1").attr("src") == "images/luz_apagada.png"){
             ligaDispositivo(1);
             mostraBits(display);
@@ -324,7 +277,7 @@ function desligaDespositivo(_n){
   					<div class="col-6 col-sm-6 col-md-3">
   						<h4>Lampada 1</h4>
         			<img src="images/luz_apagada.png" id="state_lamp1" class="img-fluid mx-auto d-block">
-						  <button type="button" id="btn_lamp1" class="btn btn-outline-light btn-block">Acender</button>
+						  <button type="button" id="btn_lamp1" value="1" class="btn btn-outline-light btn-block">Acender</button>
   					</div>
   					<div class="col-6 col-sm-6 col-md-3">
   						<h4>Lampada 2</h4>
