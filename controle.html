@@ -29,11 +29,12 @@
   function updateImage(lamp, paraEstado){
     const f = firebase.database().ref('Lampadas');  
     if (paraEstado == "off"){ 
-      estado='images/luz_apagada.png';}
-      else { estado='images/luz_acesa.png'; }
-      img = {estado};
+      	estado='images/luz_apagada.png';}
+      	else { estado='images/luz_acesa.png'; }
+      	img = {estado};
+      	f.child('lamp'+ lamp +'/').update(img);
 	  
-    switch(lamp){
+    /*switch(lamp){
       case '1': f.child('lamp1/').update(img);
         break;
       case '2': f.child('lamp2/').update(img);
@@ -50,7 +51,7 @@
         break;
       case '8': f.child('lamp8/').update(img);
         break;
-    }
+    }*/
   }
   var guardaDisplay;
   function updateDisplay(guardaDisplay){
