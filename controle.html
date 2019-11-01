@@ -129,7 +129,7 @@ function desligaDespositivo(_n){
     });    
   //imagem 1
     $("#btn_lamp1").click(function(){
-	    alert($this.val());
+	    alert($(this).val());
       if($("#state_lamp1").attr("src") == "images/luz_apagada.png"){
             ligaDispositivo(1);
             mostraBits(display);
